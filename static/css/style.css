@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #0078d4;
     --secondary-color: #50e6ff;
@@ -24,6 +28,7 @@ body {
     color: var(--text-dark);
     background: var(--white);
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .container {

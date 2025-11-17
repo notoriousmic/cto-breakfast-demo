@@ -176,15 +176,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add parallax effect to hero section
+    // Optimized scroll handling with throttle
+    let scrollTimeout;
+    let lastScrollY = 0;
+    
     window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
+        const currentScrollY = window.pageYOffset;
         
-        if (hero) {
-            hero.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+        // Debounce scroll events for better performance
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
         }
-    });
+        
+        scrollTimeout = window.requestAnimationFrame(function() {
+            lastScrollY = currentScrollY;
+        });
+    }, { passive: true });
 
     // Add random fact refresh feature
     const factCard = document.querySelector('.fact-card');
@@ -200,17 +207,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Navbar background change on scroll
+    // Navbar background change on scroll (optimized)
     const navbar = document.querySelector('header');
+    let navbarTimeout;
+    
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.backdropFilter = 'blur(10px)';
-        } else {
-            navbar.style.background = '#ffffff';
-            navbar.style.backdropFilter = 'none';
+        if (navbarTimeout) {
+            window.cancelAnimationFrame(navbarTimeout);
         }
-    });
+        
+        navbarTimeout = window.requestAnimationFrame(function() {
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = '#ffffff';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    }, { passive: true });
 
     // Add typing effect to hero subtitle
     const heroSubtitle = document.querySelector('.hero-subtitle');
