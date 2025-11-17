@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Join Us - CTO Breakfast Club by Microsoft{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1 class="page-title animate-fade-in">Join the CTO Breakfast Club</h1>
+        <p class="page-subtitle animate-fade-in-delay">Start your journey with the world's most engaging tech leadership community</p>
+    </div>
+</section>
+
+<section class="join-section">
+    <div class="container">
+        <div class="join-content">
+            <div class="join-info animate-slide-up">
+                <h2>Why Become a Member? 🌟</h2>
+                <div class="benefit-items">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Exclusive Access</strong>
+                            <p>Monthly breakfast sessions in major cities worldwide</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Virtual Events</strong>
+                            <p>Join from anywhere with our online roundtables and webinars</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Private Community</strong>
+                            <p>Access to our members-only Slack workspace and forums</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Resources Library</strong>
+                            <p>Exclusive whitepapers, case studies, and tech insights</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Microsoft Benefits</strong>
+                            <p>Special access to Microsoft tools, events, and expert network</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div>
+                            <strong>Lifetime Connections</strong>
+                            <p>Build lasting relationships with fellow technology leaders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="join-form-container animate-slide-up delay-1">
+                <div class="form-header">
+                    <h3>Express Your Interest</h3>
+                    <p>Fill out this form and we'll get back to you soon!</p>
+                </div>
+                <form class="join-form" id="joinForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company *</label>
+                        <input type="text" id="company" name="company" required placeholder="Your Company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role">Current Role *</label>
+                        <input type="text" id="role" name="role" required placeholder="CTO, VP Engineering, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" name="location" required placeholder="City, Country">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">What interests you most? *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select an option...</option>
+                            <option value="networking">Networking with peers</option>
+                            <option value="learning">Learning new technologies</option>
+                            <option value="leadership">Leadership development</option>
+                            <option value="innovation">Innovation and strategy</option>
+                            <option value="microsoft">Microsoft ecosystem</option>
+                            <option value="all">All of the above!</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell us about yourself (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Share your interests, goals, or what you hope to gain from the CTO Breakfast Club..."></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="newsletter" checked>
+                            <span>Yes, send me updates about upcoming events and tech leadership resources</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large pulse">Submit Application</button>
+                </form>
+                
+                <div id="formSuccess" class="form-success" style="display: none;">
+                    <div class="success-icon">🎉</div>
+                    <h3>Thank You!</h3>
+                    <p>We've received your application and will be in touch soon. Welcome to the community!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions 🤔</h2>
+        <div class="faq-grid">
+            <div class="faq-item animate-slide-up">
+                <h3>Who can join?</h3>
+                <p>The club is open to CTOs, VPs of Engineering, Technical Directors, and senior technology leaders from all industries.</p>
+            </div>
+            <div class="faq-item animate-slide-up delay-1">
+                <h3>Is there a membership fee?</h3>
+                <p>Membership is free! As a Microsoft initiative, we want to make this accessible to all technology leaders.</p>
+            </div>
+            <div class="faq-item animate-slide-up delay-2">
+                <h3>How often are meetings?</h3>
+                <p>We host monthly in-person breakfasts in major cities and bi-weekly virtual roundtables that you can join from anywhere.</p>
+            </div>
+            <div class="faq-item animate-slide-up delay-3">
+                <h3>What if I can't attend in person?</h3>
+                <p>No problem! Our virtual events allow you to participate from anywhere, and all content is available in our members area.</p>
+            </div>
+            <div class="faq-item animate-slide-up delay-4">
+                <h3>Do I need to use Microsoft products?</h3>
+                <p>Not at all! While we're powered by Microsoft, members use a wide variety of technologies. We welcome all tech leaders.</p>
+            </div>
+            <div class="faq-item animate-slide-up delay-5">
+                <h3>How do I get involved?</h3>
+                <p>Simply fill out the form above! Once approved, you'll receive access to our community platform and event invitations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

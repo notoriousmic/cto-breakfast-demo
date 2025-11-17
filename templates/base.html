@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CTO Breakfast Club by Microsoft{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <span class="logo-icon">☕</span>
+                    <span class="logo-text">CTO Breakfast Club</span>
+                    <span class="microsoft-badge">by Microsoft</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/join" class="nav-link join-btn">Join Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CTO Breakfast Club</h3>
+                    <p>Empowering technology leaders through community and conversation.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>🌐 Microsoft Community</p>
+                    <p>💼 LinkedIn</p>
+                    <p>🐦 Twitter</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <p>📚 Tech Blog</p>
+                    <p>🎥 Video Archive</p>
+                    <p>📅 Events Calendar</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Microsoft CTO Breakfast Club. Building the future together. 🚀</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+</body>
+</html>

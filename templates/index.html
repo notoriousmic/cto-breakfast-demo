@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">
+                Welcome to the <span class="highlight">CTO Breakfast Club</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in-delay">
+                Where technology leaders gather, share ideas, and fuel innovation over breakfast ☕🚀
+            </p>
+            <div class="hero-cta animate-fade-in-delay-2">
+                <a href="/join" class="btn btn-primary pulse">Join the Club</a>
+                <a href="/about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-emoji">🍳</div>
+            <div class="floating-emoji delay-1">💻</div>
+            <div class="floating-emoji delay-2">🎯</div>
+            <div class="floating-emoji delay-3">💡</div>
+            <div class="floating-emoji delay-4">🌟</div>
+        </div>
+    </div>
+</section>
+
+<section class="fact-section">
+    <div class="container">
+        <div class="fact-card animate-slide-up">
+            <div class="fact-icon">💭</div>
+            <div class="fact-content">
+                <h3>Tech Leadership Insight</h3>
+                <p class="fact-text">{{ fact }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Why Join Us?</h2>
+        <div class="features-grid">
+            <div class="feature-card animate-slide-up">
+                <div class="feature-icon">🤝</div>
+                <h3>Network & Connect</h3>
+                <p>Meet fellow CTOs and technology leaders from diverse industries and backgrounds.</p>
+            </div>
+            <div class="feature-card animate-slide-up delay-1">
+                <div class="feature-icon">📚</div>
+                <h3>Learn & Grow</h3>
+                <p>Share best practices, challenges, and solutions in a supportive environment.</p>
+            </div>
+            <div class="feature-card animate-slide-up delay-2">
+                <div class="feature-icon">🎯</div>
+                <h3>Innovate Together</h3>
+                <p>Collaborate on cutting-edge technology trends and strategic initiatives.</p>
+            </div>
+            <div class="feature-card animate-slide-up delay-3">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Community</h3>
+                <p>Join a worldwide network of technology leaders powered by Microsoft.</p>
+            </div>
+            <div class="feature-card animate-slide-up delay-4">
+                <div class="feature-icon">⚡</div>
+                <h3>Stay Current</h3>
+                <p>Keep up with the latest in AI, cloud, cybersecurity, and emerging tech.</p>
+            </div>
+            <div class="feature-card animate-slide-up delay-5">
+                <div class="feature-icon">🎉</div>
+                <h3>Have Fun</h3>
+                <p>Enjoy engaging discussions over great food and coffee in a relaxed atmosphere.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <h2 class="section-title">Our Impact</h2>
+        <div class="stats-grid">
+            <div class="stat-card counter-animate">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">CTOs Connected</div>
+            </div>
+            <div class="stat-card counter-animate">
+                <div class="stat-number" data-target="150">0</div>
+                <div class="stat-label">Breakfast Sessions</div>
+            </div>
+            <div class="stat-card counter-animate">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Cities Worldwide</div>
+            </div>
+            <div class="stat-card counter-animate">
+                <div class="stat-number" data-target="1000">0</div>
+                <div class="stat-label">Ideas Shared</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Join the Conversation?</h2>
+            <p>Be part of a community that's shaping the future of technology leadership.</p>
+            <a href="/join" class="btn btn-large btn-primary pulse">Get Started Today</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
