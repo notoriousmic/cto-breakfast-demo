@@ -97,7 +97,7 @@ jobs:
             const comment = {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ @${context.actor} - You are not authorized to trigger Claude fixes.\n\nOnly maintainers can trigger Claude: Please ask a maintainer to run the fix command.`
+              body: `❌ @${context.actor} - @${context.repo.owner}- You are not authorized to trigger Claude fixes.\n\nOnly maintainers can trigger Claude: Please ask a maintainer to run the fix command.`
             };
 
             if (context.eventName === 'issue_comment') {
