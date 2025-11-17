@@ -7,15 +7,46 @@ on:
     types: [created]
 
 jobs:
+  check-permissions:
+    if: |
+      (
+        github.event_name == 'issue_comment' ||
+        github.event_name == 'pull_request_review_comment'
+      ) &&
+      contains(github.event.comment.body, '@claude-fix')
+    runs-on: ubuntu-latest
+    outputs:
+      has-permission: ${{ steps.check.outputs.has-permission }}
+    steps:
+      - name: Check if user has write permission
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username: context.actor
+              });
+              const hasPermission = ['admin', 'write'].includes(permission.permission);
+              core.setOutput('has-permission', hasPermission);
+              return hasPermission;
+            } catch (error) {
+              core.setOutput('has-permission', false);
+              return false;
+            }
+
   claude-fix:
-    # Only trigger on @claude-fix command from authorized users
+    needs: check-permissions
+    # Only trigger on @claude-fix command from users with write access
     if: |
       (
         github.event_name == 'issue_comment' ||
         github.event_name == 'pull_request_review_comment'
       ) &&
       contains(github.event.comment.body, '@claude-fix') &&
-      contains(fromJSON('["notoriousmic"]'), github.event.comment.user.login)
+      needs.check-permissions.outputs.has-permission == 'true'
 
     runs-on: ubuntu-latest
 
@@ -74,13 +105,15 @@ jobs:
           # allowed_tools: "Edit(*),MultiEdit(*),Write(*),Read(*),Grep(*),LS(*),Glob(*),TodoWrite(*),NotebookEdit(*),Bash(git *),Bash(npm *),Bash(uv *),Bash(python *),Bash(pip *),Bash(cd *),Bash(pwd),Bash(ls *),Bash(cat *),Bash(head *),Bash(tail *),Bash(wc *),Bash(find *),Bash(grep *),Bash(rg *),Bash(sed *),Bash(awk *),Bash(curl *),Bash(wget *),Bash(echo *),Bash(mkdir *),Bash(rm -rf node_modules),Bash(rm -rf __pycache__),Bash(rm -rf .pytest_cache),WebSearch(*),WebFetch(*)"
 
   unauthorized-message:
+    needs: check-permissions
     # Post message for unauthorized users
     if: |
       (
         github.event_name == 'issue_comment' ||
         github.event_name == 'pull_request_review_comment'
       ) &&
-      contains(github.event.comment.body, '@claude-fix') && !contains(fromJSON('["notoriousmic"]'), github.event.comment.user.login)
+      contains(github.event.comment.body, '@claude-fix') &&
+      needs.check-permissions.outputs.has-permission == 'false'
 
     runs-on: ubuntu-latest
 
@@ -96,7 +129,7 @@ jobs:
             const comment = {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ @${context.actor} - You are not authorized to trigger Claude fixes.\n\nOnly maintainers can trigger Claude-fix: Please ask a maintainer to run the fix command.`
+              body: `❌ @${context.actor} - You are not authorized to trigger Claude fixes.\n\nOnly repository contributors with write access can trigger Claude-fix. Please ask a maintainer to run the fix command.`
             };
 
             if (context.eventName === 'issue_comment') {
