@@ -193,18 +193,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { passive: true });
 
-    // Add random fact refresh feature
+    // Automatic quote rotation for tech leader insight
     const factCard = document.querySelector('.fact-card');
-    if (factCard) {
-        factCard.style.cursor = 'pointer';
-        factCard.addEventListener('click', function() {
-            this.style.transform = 'rotateY(180deg)';
+    const factText = document.querySelector('.fact-text');
+    
+    if (factCard && factText) {
+        // Array of CTO facts (mirroring the server-side array)
+        const ctoFacts = [
+            "Great CTOs balance innovation with operational excellence 🚀",
+            "The best breakfast ideas come from sharing experiences with peers ☕",
+            "Technology leadership is about people, not just code 👥",
+            "CTOs who network together, grow together 🌱",
+            "Breakfast meetings: where the best technical decisions are made 🍳",
+            "Innovation happens at the intersection of technology and business 💡",
+            "The future of tech is built one conversation at a time 💬",
+            "CTOs leading with empathy create the strongest teams 💪",
+        ];
+        
+        let currentFactIndex = ctoFacts.findIndex(fact => fact === factText.textContent);
+        if (currentFactIndex === -1) currentFactIndex = 0;
+        
+        function rotateFact() {
+            factCard.style.transform = 'rotateY(180deg)';
             
             setTimeout(() => {
-                // In a real app, this would fetch a new fact from the server
-                location.reload();
+                currentFactIndex = (currentFactIndex + 1) % ctoFacts.length;
+                factText.textContent = ctoFacts[currentFactIndex];
+                factCard.style.transform = 'rotateY(0deg)';
             }, 300);
-        });
+        }
+        
+        // Auto-rotate every 20 seconds
+        setInterval(rotateFact, 20000);
+        
+        // Remove cursor pointer since it's no longer clickable
+        factCard.style.cursor = 'default';
     }
 
     // Navbar background change on scroll (optimized)
