@@ -2,6 +2,10 @@
 
 A fun and engaging website for the CTO Breakfast Club - where technology leaders connect, share ideas, and fuel innovation!
 
+## 🤖 AI Agent Demo
+
+**Note**: This repository serves as a demonstration for AI agent use cases within GitHub workflows, showcasing how AI can assist with development tasks, code reviews, and automated issue resolution.
+
 ## Features
 
 - 🎨 Modern, responsive design with engaging animations
