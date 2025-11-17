@@ -2,6 +2,16 @@
 
 This file contains the global rules and principles that apply to ALL development work on the CTO Breakfast Club website. These rules are specialized for building and maintaining a modern Flask web application with engaging frontend interactions.
 
+## Rules
+When reviewing refer to:
+.github/pr_review_prompt.md
+
+When fixing issue refer to:
+.github/issue_fix_prompt.md
+
+When creating pull request refer to:
+.github/pull_request_template.md
+
 ## 🎯 Core Development Principles
 
 IMPORTANT: These principles apply to ALL code changes and feature additions:
