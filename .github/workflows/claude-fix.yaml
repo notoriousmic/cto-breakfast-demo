@@ -181,7 +181,7 @@ jobs:
         run: |
           # Request Copilot as a reviewer on the PR
           gh pr edit ${{ steps.create-pr.outputs.pr_number }} \
-            --add-reviewer copilot
+            --add-reviewer Copilot
           
           # Also comment to trigger Copilot review
           gh pr comment ${{ steps.create-pr.outputs.pr_number }} \
