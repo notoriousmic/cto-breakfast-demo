@@ -138,7 +138,6 @@ jobs:
           # Generate timestamp in YYYYMMDD-HHMM format
           TIMESTAMP=$(date -u +"%Y%m%d-%H%M")
           echo "timestamp=${TIMESTAMP}" >> $GITHUB_ENV
-          echo "Generated timestamp: ${TIMESTAMP}"
           
           # Get current branch name (Claude creates the branch)
           CURRENT_BRANCH=$(git branch --show-current)
@@ -180,9 +179,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Assign @claude-review to the PR
+          # Assign @copilot to the PR
           gh pr comment ${{ steps.create-pr.outputs.pr_number }} \
-            --body "@claude-review Please review this PR"
+            --body "@copilot Please review this PR"
 
       - name: Comment on issue
         if: steps.create-pr.outputs.pr_number
