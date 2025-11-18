@@ -174,7 +174,7 @@ jobs:
             echo "pr_number=" >> $GITHUB_OUTPUT
           fi
 
-      - name: Assign Copilot as reviewer
+      - name: Assign author
         if: steps.create-pr.outputs.pr_number
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
