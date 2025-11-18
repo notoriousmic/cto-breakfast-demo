@@ -135,8 +135,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Generate timestamp in YYYY-MM-DD-HHMM format
-          TIMESTAMP=$(date -u +"%Y-%m-%d-%H%M")
+          # Generate timestamp in YYYYMMDD-HHMM format
+          TIMESTAMP=$(date -u +"%Y%m%d-%H%M")
           echo "timestamp=${TIMESTAMP}" >> $GITHUB_ENV
           echo "Generated timestamp: ${TIMESTAMP}"
           
