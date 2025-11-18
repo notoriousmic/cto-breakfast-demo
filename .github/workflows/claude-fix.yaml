@@ -175,14 +175,30 @@ jobs:
             echo "pr_number=" >> $GITHUB_OUTPUT
           fi
 
+      - name: Assign Copilot to review PR
+        if: steps.create-pr.outputs.pr_number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Assign @claude-review to the PR
+          gh pr comment ${{ steps.create-pr.outputs.pr_number }} \
+            --body "@claude-review Please review this PR"
+
       - name: Comment on issue
         if: steps.create-pr.outputs.pr_number
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          PR_NUM="${{ steps.create-pr.outputs.pr_number }}"
+          PR_URL="${{ steps.create-pr.outputs.pr_url }}"
+          
           gh issue comment ${{ env.number }} \
-            --body "✅ Claude created PR #${{ env.pr_number }} to fix this issue
-          🔗 ${{ env.pr_url }}"
+            --body "✅ Claude created PR #${PR_NUM} to fix this issue
+          
+          🔗 ${PR_URL}
+          
+          🤖 Copilot has been assigned to review the PR"
+  
   unauthorized-message:
     needs: check-permissions
     # Post message for unauthorized users
