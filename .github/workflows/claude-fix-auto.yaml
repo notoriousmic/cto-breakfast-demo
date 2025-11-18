@@ -103,7 +103,7 @@ jobs:
           INSTRUCTIONS=$(cat .github/issue_fix_prompt.md | sed 's/{AI_ASSISTANT}/claude/g')
 
           # Use heredoc to preserve multiline content with context prepended
-          echo "PROMPT<<EOF" >> $GITHUB_OUTPUT
+          echo "CUSTOM_INSTRUCTIONS<<EOF" >> $GITHUB_OUTPUT
           echo "# GitHub Context" >> $GITHUB_OUTPUT
           echo "- Repository: ${{ github.repository }}" >> $GITHUB_OUTPUT
           echo "- Issue/PR Number: ${ISSUE_NUMBER}" >> $GITHUB_OUTPUT
@@ -114,7 +114,7 @@ jobs:
 
       - name: Run Claude Code Fix
         id: claude
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@beta
         timeout-minutes: 30
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -125,7 +125,10 @@ jobs:
           trigger_phrase: "@claude-fix-auto"
 
           # Fix-specific instructions loaded from template
-          prompt: ${{ steps.load-instructions.outputs.PROMPT }}
+          custom_instructions: ${{ steps.load-instructions.outputs.CUSTOM_INSTRUCTIONS }}
+
+          # Commented out - using default tools
+          # allowed_tools: "Edit(*),MultiEdit(*),Write(*),Read(*),Grep(*),LS(*),Glob(*),TodoWrite(*),NotebookEdit(*),Bash(git *),Bash(npm *),Bash(uv *),Bash(python *),Bash(pip *),Bash(cd *),Bash(pwd),Bash(ls *),Bash(cat *),Bash(head *),Bash(tail *),Bash(wc *),Bash(find *),Bash(grep *),Bash(rg *),Bash(sed *),Bash(awk *),Bash(curl *),Bash(wget *),Bash(echo *),Bash(mkdir *),Bash(rm -rf node_modules),Bash(rm -rf __pycache__),Bash(rm -rf .pytest_cache),WebSearch(*),WebFetch(*)"
       - name: Create pull request with fixes
         if: success()
         id: create-pr
