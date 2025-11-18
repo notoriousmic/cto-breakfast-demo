@@ -77,7 +77,7 @@ jobs:
           INSTRUCTIONS=$(cat .github/pr_review_prompt.md)
 
           # Use heredoc to preserve multiline content with context prepended
-          echo "CUSTOM_INSTRUCTIONS<<EOF" >> $GITHUB_OUTPUT
+          echo "PROMPT<<EOF" >> $GITHUB_OUTPUT
           echo "# GitHub Context" >> $GITHUB_OUTPUT
           echo "- Repository: ${{ github.repository }}" >> $GITHUB_OUTPUT
           echo "- PR Number: ${PR_NUMBER}" >> $GITHUB_OUTPUT
@@ -88,7 +88,7 @@ jobs:
 
       - name: Run Claude Code Review
         id: claude
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-action@v1
         timeout-minutes: 15
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -99,7 +99,7 @@ jobs:
           trigger_phrase: "@claude-review"
 
           # Review-specific instructions loaded from template
-          custom_instructions: ${{ steps.load-instructions.outputs.CUSTOM_INSTRUCTIONS }}
+          prompt: ${{ steps.load-instructions.outputs.PROMPT }}
 
           # Commented out - using default tools
           # allowed_tools: "Read(*),Grep(*),LS(*),Glob(*),Bash(npm test*),Bash(npm run test*),Bash(npm run lint*),Bash(npm run type*),Bash(npm run check*),Bash(uv run pytest*),Bash(uv run ruff*),Bash(uv run mypy*),Bash(git log*),Bash(git diff*),Bash(git status*),Bash(git show*),Bash(cat *),Bash(head *),Bash(tail *),Bash(wc *),Bash(find * -type f),WebSearch(*),TodoWrite(*)"
