@@ -90,7 +90,8 @@ This project follows comprehensive development standards outlined in [AGENTS.md]
 ### AI-Powered Development
 
 The project includes automated development assistance:
-- **@claude-fix-auto** - Comment on issues to get automated fixes
+- **@claude-fix-auto** - Comment on issues to get fully automatic fix and Request  
+- **@claude-fix** - Comment on issues to get hybrid approch, automatic fix but you open the Pull Request
 - **Pull request reviews** - Automated code review and suggestions
 - **Release notes** - Automated changelog generation
 
