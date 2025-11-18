@@ -47,6 +47,7 @@ The website will be available at `http://localhost:5000`
 cto-breakfast-demo/
 ├── app.py                 # Main Flask application
 ├── requirements.txt       # Python dependencies
+├── AGENTS.md             # Development guidelines and standards
 ├── templates/            # HTML templates
 │   ├── base.html        # Base template with navigation and footer
 │   ├── index.html       # Homepage
@@ -61,14 +62,22 @@ cto-breakfast-demo/
 
 ## Technologies Used
 
-- **Backend**: Flask (Python)
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Backend**: Flask 3.0.0 (Python), Werkzeug 3.0.3
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript (no frameworks)
 - **Styling**: Custom CSS with animations and transitions
 - **Features**: Intersection Observer API, smooth scrolling, form handling
 
 ## Contributing
 
 Feel free to submit issues and enhancement requests!
+
+For development guidelines and standards, please refer to `AGENTS.md` which contains:
+- 🎯 Core development principles
+- 🧱 Code structure and modularity guidelines  
+- 🎨 Frontend development standards
+- ⚡ Performance optimization requirements
+- 🐍 Flask development patterns
+- 🧪 Testing and quality standards
 
 ## License
 
