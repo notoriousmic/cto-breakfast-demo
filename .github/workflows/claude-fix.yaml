@@ -181,12 +181,11 @@ jobs:
         run: |
           # Request Copilot as a reviewer on the PR
           gh pr edit ${{ steps.create-pr.outputs.pr_number }} \
-            --add-reviewer Copilot \
             --add-assignee "${{ github.actor }}"
           
-          # Also comment to trigger Copilot review
+          # Also comment to trigger Claude review
           gh pr comment ${{ steps.create-pr.outputs.pr_number }} \
-            --body "@copilot Please review this PR"
+            --body "@claude-review Please review this PR"
 
       - name: Comment on issue
         if: steps.create-pr.outputs.pr_number
