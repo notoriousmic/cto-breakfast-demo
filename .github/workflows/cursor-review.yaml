@@ -7,6 +7,36 @@ on:
     types: [created]
 
 jobs:
+  check-permissions:
+    if: |
+      (
+        github.event_name == 'issue_comment' ||
+        github.event_name == 'pull_request_review_comment'
+      ) &&
+      contains(github.event.comment.body, '@claude-review')
+    runs-on: ubuntu-latest
+    outputs:
+      has-permission: ${{ steps.check.outputs.has-permission }}
+    steps:
+      - name: Check if user has write permission
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username: context.actor
+              });
+              const hasPermission = ['admin', 'write'].includes(permission.permission);
+              core.setOutput('has-permission', hasPermission);
+              return hasPermission;
+            } catch (error) {
+              core.setOutput('has-permission', false);
+              return false;
+            }
+
   cursor-review:
     # Only trigger on @cursor-review command from authorized users
     if: |
@@ -95,7 +125,7 @@ jobs:
             const comment = {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ @${context.actor} - You are not authorized to trigger Claude reviews.\n\nOnly repository contributors with write access can trigger Claude reviews. Please ask a maintainer for review.`
+              body: `❌ @${context.actor} - You are not authorized to trigger Cursor reviews.\n\nOnly repository contributors with write access can trigger Cursor reviews. Please ask a maintainer for review.`
             };
 
             if (context.eventName === 'issue_comment') {
