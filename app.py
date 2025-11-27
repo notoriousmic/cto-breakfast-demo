@@ -35,5 +35,10 @@ def join():
     """Join the club page"""
     return render_template('join.html')
 
+@app.route('/agent')
+def battle_of_agents():
+    """Battle of the Agents page"""
+    return render_template('battle_of_agents.html')
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
