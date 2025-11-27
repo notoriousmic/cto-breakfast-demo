@@ -13,7 +13,7 @@ jobs:
         github.event_name == 'issue_comment' ||
         github.event_name == 'pull_request_review_comment'
       ) &&
-      contains(github.event.comment.body, '@claude-review')
+      contains(github.event.comment.body, '@cursor-fix')
     runs-on: ubuntu-latest
     outputs:
       has-permission: ${{ steps.check.outputs.has-permission }}
