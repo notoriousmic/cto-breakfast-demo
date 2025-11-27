@@ -38,14 +38,15 @@ jobs:
             }
 
   cursor-fix:
-    # Only trigger on @cursor-fix command from authorized users
+    needs: check-permissions
+    # Only trigger on @cursor-fix command from users with write access
     if: |
       (
         github.event_name == 'issue_comment' ||
         github.event_name == 'pull_request_review_comment'
       ) &&
       contains(github.event.comment.body, '@cursor-fix') &&
-      contains(fromJSON('["coleam00"]'), github.event.comment.user.login)
+      needs.check-permissions.outputs.has-permission == 'true'
 
     runs-on: ubuntu-latest
 
@@ -102,6 +103,7 @@ jobs:
           cursor-agent -p "$(cat /tmp/cursor_fix_prompt.txt)" --model gpt-5 --force
 
   unauthorized-message:
+    needs: check-permissions
     # Post message for unauthorized users
     if: |
       (
@@ -109,7 +111,7 @@ jobs:
         github.event_name == 'pull_request_review_comment'
       ) &&
       contains(github.event.comment.body, '@cursor-fix') &&
-      !contains(fromJSON('["coleam00"]'), github.event.comment.user.login)
+      needs.check-permissions.outputs.has-permission == 'false'
 
     runs-on: ubuntu-latest
 
@@ -125,7 +127,7 @@ jobs:
             const comment = {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ @${context.actor} - You are not authorized to trigger Cursor fix.\n\nOnly repository contributors with write access can trigger Cursor fixe. Please ask a maintainer for review.`
+              body: `❌ @${context.actor} - You are not authorized to trigger Cursor fix.\n\nOnly repository contributors with write access can trigger Cursor fix. Please ask a maintainer for review.`
             };
 
             if (context.eventName === 'issue_comment') {
