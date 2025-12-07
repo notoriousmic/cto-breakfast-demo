@@ -803,3 +803,509 @@ footer {
         gap: 0.5rem;
     }
 }
+
+/* Battle of Agents Page Styles */
+.battle-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.battle-hero .page-title {
+    color: var(--white);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.battle-hero .page-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.battle-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.battle-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.battle-stat .stat-icon {
+    font-size: 1.5rem;
+}
+
+/* Agents Showcase */
+.agents-showcase {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.showcase-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+    line-height: 1.8;
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.agent-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--agent-color);
+}
+
+.agent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--agent-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.agent-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.agent-card:hover::before {
+    opacity: 1;
+}
+
+.agent-header {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-bg);
+    margin-bottom: 1.5rem;
+}
+
+.agent-icon-large {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.agent-name {
+    font-size: 2rem;
+    color: var(--agent-color);
+    margin-bottom: 0.5rem;
+}
+
+.agent-tagline {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.agent-body {
+    margin-bottom: 1.5rem;
+}
+
+.agent-specialty,
+.agent-strengths,
+.agent-command {
+    margin-bottom: 1.5rem;
+}
+
+.agent-body h4 {
+    color: var(--text-dark);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agent-specialty p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.agent-strengths ul {
+    list-style: none;
+    padding: 0;
+}
+
+.agent-strengths li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.agent-strengths li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--agent-color);
+    font-weight: bold;
+}
+
+.command-badge {
+    display: inline-block;
+    background: var(--dark-bg);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.agent-footer {
+    margin-top: auto;
+}
+
+.btn-select-agent {
+    width: 100%;
+    padding: 1rem;
+    background: var(--agent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-select-agent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Battle Comparison */
+.battle-comparison {
+    padding: 5rem 0;
+    background: var(--white);
+}
+
+.comparison-table {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--light-bg);
+}
+
+.comparison-row:last-child {
+    border-bottom: none;
+}
+
+.comparison-cell {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-cell {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    justify-content: flex-start;
+}
+
+.header-row {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    font-weight: 700;
+}
+
+.header-row .feature-cell {
+    color: var(--white);
+}
+
+.agent-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.agent-icon-small {
+    font-size: 1.5rem;
+}
+
+.comparison-row:not(.header-row):hover {
+    background: var(--light-bg);
+}
+
+/* Battle Scenarios */
+.battle-scenarios {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.scenario-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.scenario-card:hover {
+    transform: translateY(-5px);
+}
+
+.scenario-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.scenario-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.scenario-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.scenario-winner {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--agent-color);
+}
+
+.winner-badge {
+    display: block;
+    color: var(--agent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-winner strong {
+    color: var(--agent-color);
+    font-size: 1.1rem;
+}
+
+/* Battle CTA */
+.battle-cta {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.battle-cta .cta-content h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.battle-cta .cta-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Agent Modal */
+.agent-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    color: var(--text-light);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--text-dark);
+}
+
+.modal-header {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-bg);
+    margin-bottom: 1.5rem;
+}
+
+.modal-agent-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.modal-action {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+/* Responsive for Battle Page */
+@media (max-width: 768px) {
+    .battle-hero .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .battle-stats {
+        gap: 1rem;
+    }
+    
+    .agents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-row {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+    
+    .comparison-cell {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .scenarios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .battle-hero .page-title {
+        font-size: 2rem;
+    }
+    
+    .battle-hero .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .battle-stat {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .comparison-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-cell {
+        justify-content: flex-start;
+        text-align: left;
+    }
+    
+    .agent-cell {
+        flex-direction: row;
+    }
+}

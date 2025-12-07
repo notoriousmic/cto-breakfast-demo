@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Battle of the Agents - CTO Breakfast Club{% endblock %}
+
+{% block content %}
+<section class="page-hero battle-hero">
+    <div class="container">
+        <h1 class="page-title animate-fade-in">⚔️ Battle of the Agents</h1>
+        <p class="page-subtitle animate-fade-in-delay">Meet the AI powerhouses revolutionizing our development workflow</p>
+        <div class="battle-stats animate-fade-in-delay-2">
+            <div class="battle-stat">
+                <span class="stat-icon">🤖</span>
+                <span class="stat-text">3 Elite Agents</span>
+            </div>
+            <div class="battle-stat">
+                <span class="stat-icon">⚡</span>
+                <span class="stat-text">Infinite Capabilities</span>
+            </div>
+            <div class="battle-stat">
+                <span class="stat-icon">🏆</span>
+                <span class="stat-text">All Winners</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="agents-showcase">
+    <div class="container">
+        <div class="showcase-intro animate-slide-up">
+            <h2 class="section-title">Choose Your Champion 🎯</h2>
+            <p class="section-description">
+                Each AI agent brings unique superpowers to the table. Whether you need deep analysis, 
+                lightning-fast execution, or seamless collaboration, we've got you covered!
+            </p>
+        </div>
+
+        <div class="agents-grid">
+            {% for agent in agents %}
+            <div class="agent-card animate-slide-up" data-agent="{{ agent.name.lower() }}" style="--agent-color: {{ agent.color }}">
+                <div class="agent-header">
+                    <div class="agent-icon-large">{{ agent.icon }}</div>
+                    <h3 class="agent-name">{{ agent.name }}</h3>
+                    <p class="agent-tagline">{{ agent.tagline }}</p>
+                </div>
+                
+                <div class="agent-body">
+                    <div class="agent-specialty">
+                        <h4>💫 Specialty</h4>
+                        <p>{{ agent.specialty }}</p>
+                    </div>
+                    
+                    <div class="agent-strengths">
+                        <h4>⚡ Core Strengths</h4>
+                        <ul>
+                            {% for strength in agent.strengths %}
+                            <li>{{ strength }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <div class="agent-command">
+                        <h4>🎮 Summon Command</h4>
+                        <code class="command-badge">{{ agent.command }}</code>
+                    </div>
+                </div>
+                
+                <div class="agent-footer">
+                    <button class="btn-select-agent" data-agent="{{ agent.name }}">
+                        Select {{ agent.name }} 🚀
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="battle-comparison">
+    <div class="container">
+        <h2 class="section-title animate-slide-up">Head-to-Head Comparison 🥊</h2>
+        <div class="comparison-table animate-slide-up delay-1">
+            <div class="comparison-row header-row">
+                <div class="comparison-cell feature-cell">Feature</div>
+                {% for agent in agents %}
+                <div class="comparison-cell agent-cell" style="--agent-color: {{ agent.color }}">
+                    <span class="agent-icon-small">{{ agent.icon }}</span>
+                    {{ agent.name }}
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">Code Analysis</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">Speed</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">GitHub Integration</div>
+                <div class="comparison-cell">⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">Documentation</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">Security Focus</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-cell feature-cell">Team Collaboration</div>
+                <div class="comparison-cell">⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐</div>
+                <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="battle-scenarios">
+    <div class="container">
+        <h2 class="section-title animate-slide-up">Real-World Scenarios 🎬</h2>
+        <div class="scenarios-grid">
+            <div class="scenario-card animate-slide-up">
+                <div class="scenario-icon">🔍</div>
+                <h3>Deep Code Review</h3>
+                <p>When you need thorough analysis and security checks:</p>
+                <div class="scenario-winner" style="--agent-color: #8B5CF6">
+                    <span class="winner-badge">🏆 Best Choice</span>
+                    <strong>Claude</strong> - Comprehensive analysis & detailed insights
+                </div>
+            </div>
+            
+            <div class="scenario-card animate-slide-up delay-1">
+                <div class="scenario-icon">⚡</div>
+                <h3>Quick Fix Needed</h3>
+                <p>When you're racing against time:</p>
+                <div class="scenario-winner" style="--agent-color: #3B82F6">
+                    <span class="winner-badge">🏆 Best Choice</span>
+                    <strong>Cursor</strong> - Lightning-fast solutions
+                </div>
+            </div>
+            
+            <div class="scenario-card animate-slide-up delay-2">
+                <div class="scenario-icon">👥</div>
+                <h3>Team Collaboration</h3>
+                <p>When working with pull requests and team workflows:</p>
+                <div class="scenario-winner" style="--agent-color: #10B981">
+                    <span class="winner-badge">🏆 Best Choice</span>
+                    <strong>Copilot</strong> - Seamless GitHub integration
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="battle-cta">
+    <div class="container">
+        <div class="cta-content animate-slide-up">
+            <h2>Ready to Unleash the Power? 🎮</h2>
+            <p>Join the CTO Breakfast Club and get access to all three AI champions!</p>
+            <div class="cta-buttons">
+                <a href="/join" class="btn btn-large btn-primary pulse">Join the Club</a>
+                <a href="/about" class="btn btn-large btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="agent-modal" class="agent-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-header">
+            <div id="modal-icon" class="modal-agent-icon"></div>
+            <h2 id="modal-title"></h2>
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modal-action">Get Started with <span id="modal-agent-name"></span></button>
+        </div>
+    </div>
+</div>
+{% endblock %}

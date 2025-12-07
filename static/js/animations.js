@@ -289,4 +289,129 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('🎉 CTO Breakfast Club website loaded successfully!');
     console.log('☕ Ready to connect technology leaders worldwide!');
+
+    // Battle of Agents page functionality
+    const agentCards = document.querySelectorAll('.agent-card');
+    const selectButtons = document.querySelectorAll('.btn-select-agent');
+    const modal = document.getElementById('agent-modal');
+    const modalClose = document.querySelector('.modal-close');
+    
+    if (agentCards.length > 0) {
+        // Add hover effects for agent cards
+        agentCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.agent-icon-large');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.agent-icon-large');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+    }
+    
+    if (selectButtons.length > 0) {
+        selectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const agentName = this.getAttribute('data-agent');
+                const agentCard = this.closest('.agent-card');
+                const agentIcon = agentCard.querySelector('.agent-icon-large').textContent;
+                const agentTagline = agentCard.querySelector('.agent-tagline').textContent;
+                const agentSpecialty = agentCard.querySelector('.agent-specialty p').textContent;
+                
+                // Show modal with agent info
+                if (modal) {
+                    const modalIcon = document.getElementById('modal-icon');
+                    const modalTitle = document.getElementById('modal-title');
+                    const modalBody = document.getElementById('modal-body');
+                    const modalAgentName = document.getElementById('modal-agent-name');
+                    
+                    if (modalIcon) modalIcon.textContent = agentIcon;
+                    if (modalTitle) modalTitle.textContent = `You selected ${agentName}!`;
+                    if (modalBody) {
+                        modalBody.innerHTML = `
+                            <p><strong>${agentTagline}</strong></p>
+                            <p>${agentSpecialty}</p>
+                            <p>To summon ${agentName}, simply comment with the command shown on the card in your GitHub issues or pull requests.</p>
+                            <p>Join the CTO Breakfast Club to unlock the full power of AI-assisted development!</p>
+                        `;
+                    }
+                    if (modalAgentName) modalAgentName.textContent = agentName;
+                    
+                    modal.style.display = 'block';
+                    
+                    // Add animation
+                    setTimeout(() => {
+                        modal.querySelector('.modal-content').style.opacity = '1';
+                    }, 10);
+                }
+            });
+        });
+    }
+    
+    // Close modal
+    if (modalClose) {
+        modalClose.addEventListener('click', function() {
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+    
+    // Close modal when clicking outside
+    if (modal) {
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+    
+    // Modal action button
+    const modalAction = document.querySelector('.modal-action');
+    if (modalAction) {
+        modalAction.addEventListener('click', function() {
+            window.location.href = '/join';
+        });
+    }
+    
+    // Add interactive comparison row highlights
+    const comparisonRows = document.querySelectorAll('.comparison-row:not(.header-row)');
+    if (comparisonRows.length > 0) {
+        comparisonRows.forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    }
+    
+    // Animate scenario cards on scroll
+    const scenarioCards = document.querySelectorAll('.scenario-card');
+    if (scenarioCards.length > 0) {
+        const scenarioObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        scenarioCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            scenarioObserver.observe(card);
+        });
+    }
 });
