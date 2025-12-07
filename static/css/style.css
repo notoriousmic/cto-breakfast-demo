@@ -916,7 +916,15 @@ footer {
 .agent-icon-large {
     font-size: 4rem;
     margin-bottom: 1rem;
-    animation: bounce 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.agent-card:hover .agent-icon-large {
+    animation: bounce 1s ease-in-out;
+}
+
+.agent-icon-hover {
+    transform: scale(1.2) rotate(10deg);
 }
 
 @keyframes bounce {
@@ -1174,6 +1182,12 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.agent-modal.modal-visible {
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
 }
@@ -1186,18 +1200,14 @@ footer {
     width: 90%;
     max-width: 600px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: modalSlideIn 0.3s ease;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@keyframes modalSlideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.agent-modal.modal-visible .modal-content {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .modal-close {

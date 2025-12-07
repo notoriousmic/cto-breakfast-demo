@@ -297,19 +297,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.querySelector('.modal-close');
     
     if (agentCards.length > 0) {
-        // Add hover effects for agent cards
+        // Add hover effects for agent cards using CSS classes
         agentCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const icon = this.querySelector('.agent-icon-large');
                 if (icon) {
-                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    icon.classList.add('agent-icon-hover');
                 }
             });
             
             card.addEventListener('mouseleave', function() {
                 const icon = this.querySelector('.agent-icon-large');
                 if (icon) {
-                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    icon.classList.remove('agent-icon-hover');
                 }
             });
         });
@@ -345,32 +345,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     modal.style.display = 'block';
                     
-                    // Add animation
-                    setTimeout(() => {
-                        modal.querySelector('.modal-content').style.opacity = '1';
-                    }, 10);
+                    // Trigger animation on next frame
+                    requestAnimationFrame(() => {
+                        modal.classList.add('modal-visible');
+                    });
                 }
             });
         });
     }
     
-    // Close modal
-    if (modalClose) {
-        modalClose.addEventListener('click', function() {
-            if (modal) {
+    // Function to close modal
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('modal-visible');
+            setTimeout(() => {
                 modal.style.display = 'none';
-            }
-        });
+            }, 300);
+        }
+    }
+    
+    // Close modal with close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
     }
     
     // Close modal when clicking outside
     if (modal) {
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                closeModal();
             }
         });
     }
+    
+    // Close modal with Escape key for keyboard accessibility
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
     
     // Modal action button
     const modalAction = document.querySelector('.modal-action');
