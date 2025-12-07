@@ -287,6 +287,152 @@ document.addEventListener('DOMContentLoaded', function() {
         emoji.style.cursor = 'pointer';
     });
 
+    // Battle of Agents Page Interactivity
+    if (window.location.pathname === '/battle') {
+        initBattlePageInteractions();
+    }
+
     console.log('🎉 CTO Breakfast Club website loaded successfully!');
     console.log('☕ Ready to connect technology leaders worldwide!');
 });
+
+// Battle of Agents Page Functions
+function initBattlePageInteractions() {
+    // Agent card interactions
+    const agentCards = document.querySelectorAll('.agent-card');
+    agentCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Battle stats animation
+    const battleStats = document.querySelectorAll('.battle-stat .stat-number');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const finalValue = target.textContent;
+                
+                if (finalValue !== '∞' && !isNaN(finalValue)) {
+                    animateCounter(target, 0, parseInt(finalValue), 2000);
+                }
+                observer.unobserve(target);
+            }
+        });
+    });
+
+    battleStats.forEach(stat => observer.observe(stat));
+    
+    // Interactive comparison table
+    const ratingCells = document.querySelectorAll('.rating');
+    ratingCells.forEach(cell => {
+        cell.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.filter = 'brightness(1.2)';
+        });
+        
+        cell.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.filter = 'brightness(1)';
+        });
+        
+        cell.style.transition = 'all 0.3s ease';
+        cell.style.cursor = 'pointer';
+    });
+    
+    console.log('⚔️ Battle of Agents interactions loaded!');
+}
+
+function selectAgent(agentName) {
+    const agentCard = document.querySelector(`[data-agent="${agentName.toLowerCase()}"]`);
+    
+    // Create victory effect
+    const victoryEffect = document.createElement('div');
+    victoryEffect.innerHTML = '🎉 SELECTED! 🎉';
+    victoryEffect.style.cssText = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #FFD700, #FFA500);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        z-index: 1000;
+        animation: victoryPulse 2s ease-in-out;
+        pointer-events: none;
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+    `;
+    
+    // Add victory animation CSS if not exists
+    if (!document.querySelector('#victoryAnimation')) {
+        const style = document.createElement('style');
+        style.id = 'victoryAnimation';
+        style.textContent = `
+            @keyframes victoryPulse {
+                0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+                50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+                100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    agentCard.style.position = 'relative';
+    agentCard.appendChild(victoryEffect);
+    
+    setTimeout(() => {
+        victoryEffect.remove();
+    }, 2000);
+    
+    // Highlight selected agent
+    agentCards = document.querySelectorAll('.agent-card');
+    agentCards.forEach(card => card.classList.remove('selected'));
+    agentCard.classList.add('selected');
+    
+    console.log(`🎯 Agent selected: ${agentName}`);
+}
+
+function learnMore(agentName) {
+    const urls = {
+        'claude': 'https://claude.ai',
+        'gpt-4': 'https://openai.com/gpt-4',
+        'cursor': 'https://cursor.sh',
+        'github copilot': 'https://github.com/features/copilot'
+    };
+    
+    const url = urls[agentName];
+    if (url) {
+        window.open(url, '_blank');
+    }
+    console.log(`📚 Learn more about: ${agentName}`);
+}
+
+function animateCounter(element, start, end, duration) {
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const currentValue = Math.floor(start + (end - start) * easeOutQuart(progress));
+        element.textContent = currentValue;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    requestAnimationFrame(updateCounter);
+}
+
+function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+}

@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Battle of AI Agents - CTO Breakfast Club{% endblock %}
+
+{% block content %}
+<section class="battle-hero">
+    <div class="container">
+        <div class="battle-hero-content">
+            <h1 class="battle-title animate-fade-in">
+                Battle of the <span class="highlight">AI Agents</span> ⚔️
+            </h1>
+            <p class="battle-subtitle animate-fade-in-delay">
+                Compare the world's leading AI assistants and discover which one fits your development needs 🤖✨
+            </p>
+            <div class="battle-stats animate-fade-in-delay-2">
+                <div class="battle-stat">
+                    <span class="stat-number">{{ agents|length }}</span>
+                    <span class="stat-label">AI Agents</span>
+                </div>
+                <div class="battle-stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Possibilities</span>
+                </div>
+                <div class="battle-stat">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Winner (You!)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="agents-arena">
+    <div class="container">
+        <h2 class="arena-title">Choose Your Fighter 🥊</h2>
+        <div class="agents-grid">
+            {% for agent in agents %}
+            <div class="agent-card animate-slide-up" data-agent="{{ agent.name|lower }}" style="--agent-color: {{ agent.color }}">
+                <div class="agent-header">
+                    <div class="agent-avatar" style="background: linear-gradient(135deg, {{ agent.color }}, {{ agent.color }}20)">
+                        <span class="agent-icon">{{ agent.icon }}</span>
+                    </div>
+                    <div class="agent-info">
+                        <h3 class="agent-name">{{ agent.name }}</h3>
+                        <p class="agent-company">by {{ agent.company }}</p>
+                    </div>
+                    <div class="agent-specialty-badge">{{ agent.specialty }}</div>
+                </div>
+                
+                <div class="agent-description">
+                    <p>{{ agent.description }}</p>
+                </div>
+
+                <div class="agent-strengths">
+                    <h4>Core Strengths:</h4>
+                    <ul class="strengths-list">
+                        {% for strength in agent.strengths %}
+                        <li class="strength-item">
+                            <span class="strength-icon">💪</span>
+                            {{ strength }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="agent-actions">
+                    <button class="btn btn-agent-primary" onclick="selectAgent('{{ agent.name }}')">
+                        Choose {{ agent.name }}
+                    </button>
+                    <button class="btn btn-agent-secondary" onclick="learnMore('{{ agent.name|lower }}')">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="battle-comparison">
+    <div class="container">
+        <h2 class="section-title">Head-to-Head Comparison 📊</h2>
+        <div class="comparison-table-wrapper">
+            <table class="comparison-table animate-slide-up">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        {% for agent in agents %}
+                        <th class="agent-column" style="border-top: 3px solid {{ agent.color }}">
+                            <span class="table-agent-icon">{{ agent.icon }}</span>
+                            {{ agent.name }}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Code Generation</strong></td>
+                        <td class="rating">⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reasoning & Analysis</strong></td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IDE Integration</strong></td>
+                        <td class="rating">⭐⭐⭐</td>
+                        <td class="rating">⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Creative Tasks</strong></td>
+                        <td class="rating">⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐</td>
+                        <td class="rating">⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real-time Assistance</strong></td>
+                        <td class="rating">⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                        <td class="rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="battle-insights">
+    <div class="container">
+        <h2 class="section-title">Battle Insights 🎯</h2>
+        <div class="insights-grid">
+            <div class="insight-card animate-slide-up">
+                <div class="insight-icon">🧠</div>
+                <h3>For Deep Thinking</h3>
+                <p>When you need thorough analysis, code reviews, or complex problem-solving, Claude excels with its constitutional AI approach and reasoning capabilities.</p>
+            </div>
+            
+            <div class="insight-card animate-slide-up delay-1">
+                <div class="insight-icon">🎨</div>
+                <h3>For Creative Projects</h3>
+                <p>GPT-4's multimodal capabilities and creative strength make it perfect for innovative projects, content creation, and versatile problem-solving.</p>
+            </div>
+            
+            <div class="insight-card animate-slide-up delay-2">
+                <div class="insight-icon">💻</div>
+                <h3>For Development Workflow</h3>
+                <p>Cursor and GitHub Copilot shine in IDE integration, providing real-time assistance and seamless development workflow enhancement.</p>
+            </div>
+            
+            <div class="insight-card animate-slide-up delay-3">
+                <div class="insight-icon">🔄</div>
+                <h3>Use Multiple Agents</h3>
+                <p>The best CTOs don't pick just one! Use different agents for different tasks to maximize your team's productivity and innovation potential.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Level Up Your AI Game?</h2>
+            <p>Join the CTO Breakfast Club and learn how technology leaders are leveraging AI agents to transform their organizations.</p>
+            <div class="cta-buttons">
+                <a href="/join" class="btn btn-large btn-primary pulse">Join the Community</a>
+                <a href="/about" class="btn btn-large btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

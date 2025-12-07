@@ -35,5 +35,50 @@ def join():
     """Join the club page"""
     return render_template('join.html')
 
+@app.route('/battle')
+def battle():
+    """Battle of the Agents - AI comparison showcase"""
+    # Define AI agents for the battle comparison
+    agents = [
+        {
+            'name': 'Claude',
+            'company': 'Anthropic',
+            'icon': '🧠',
+            'color': '#FF6B35',
+            'strengths': ['Reasoning', 'Analysis', 'Code Review', 'Long-form Writing'],
+            'specialty': 'Constitutional AI & Safe Reasoning',
+            'description': 'Advanced AI assistant focused on helpful, harmless, and honest interactions with strong reasoning capabilities.'
+        },
+        {
+            'name': 'GPT-4',
+            'company': 'OpenAI', 
+            'icon': '⚡',
+            'color': '#10A37F',
+            'strengths': ['Creativity', 'Code Generation', 'Multimodal', 'General Knowledge'],
+            'specialty': 'Multimodal Intelligence',
+            'description': 'Cutting-edge AI model with broad capabilities across text, vision, and creative tasks.'
+        },
+        {
+            'name': 'Cursor',
+            'company': 'Cursor',
+            'icon': '✨', 
+            'color': '#0078D4',
+            'strengths': ['Code Editing', 'IDE Integration', 'Real-time Assistance', 'Developer UX'],
+            'specialty': 'AI-Powered Development',
+            'description': 'AI-first code editor that understands your codebase and provides intelligent assistance.'
+        },
+        {
+            'name': 'GitHub Copilot',
+            'company': 'GitHub/Microsoft',
+            'icon': '🚀',
+            'color': '#6366F1', 
+            'strengths': ['Code Completion', 'Git Integration', 'Pair Programming', 'Enterprise Ready'],
+            'specialty': 'Development Productivity',
+            'description': 'Your AI pair programmer that suggests code and entire functions in real-time.'
+        }
+    ]
+    
+    return render_template('battle.html', agents=agents)
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
