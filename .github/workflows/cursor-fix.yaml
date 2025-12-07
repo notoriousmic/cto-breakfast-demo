@@ -100,7 +100,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Run cursor-agent with the fix instructions and full write permissions
-          cursor-agent -p "$(cat /tmp/cursor_fix_prompt.txt)" --model gpt-5 --force
+          cursor-agent -p "$(cat /tmp/cursor_fix_prompt.txt)" --model gemini-3-pro --force
 
   unauthorized-message:
     needs: check-permissions
