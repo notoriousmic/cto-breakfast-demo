@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Intersection Observer for Scroll Animations
     const animatedElements = document.querySelectorAll(
-        '.animate-slide-up, .animate-fade-in, .feature-card, .testimonial-card, .faq-item'
+        '.animate-slide-up, .animate-fade-in, .feature-card, .testimonial-card, .faq-item, .value-card'
     );
 
     const elementObserver = new IntersectionObserver((entries) => {
