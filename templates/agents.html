@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Battle of the Agents - CTO Breakfast Club{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1 class="page-title animate-fade-in">Battle of the Agents 🤖</h1>
+        <p class="page-subtitle animate-fade-in-delay">The future of software development is multi-agent orchestration</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            
+            <!-- Why One Agent Is Not Enough -->
+            <div class="content-block animate-slide-up">
+                <h2>Why One Agent Is Not Enough ⚠️</h2>
+                <p>
+                    In the early days of AI coding assistance, a single "copilot" was enough. But as tasks get more complex,
+                    relying on a single agent creates bottlenecks. A single agent struggles with context overload, 
+                    develops blind spots, and lacks the specialized knowledge required for different stages of the SDLC.
+                </p>
+                <div class="features-grid" style="margin-top: 2rem;">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Context Overload</h3>
+                        <p>One agent can't hold the entire repository context effectively.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚖️</div>
+                        <h3>Bias & Blind Spots</h3>
+                        <p>Without peer review, a single agent's mistakes go unchecked.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📉</div>
+                        <h3>Scaling Limits</h3>
+                        <p>Sequential processing slows down complex refactoring tasks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meet the Agents -->
+            <div class="content-block animate-slide-up delay-1">
+                <h2>Meet the Agents 👥</h2>
+                <p>
+                    Just like a high-performing engineering team, a multi-agent system relies on specialization. 
+                    Each agent plays a specific role to ensure quality and efficiency.
+                </p>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">📐</div>
+                        <h3>Architect Agent</h3>
+                        <p>Plans the system structure and breaks down high-level requirements.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💻</div>
+                        <h3>Coding Agent</h3>
+                        <p>Focuses on writing clean, efficient, and syntactic code.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🛡️</div>
+                        <h3>Security Agent</h3>
+                        <p>Reviews code for vulnerabilities and security best practices.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🧪</div>
+                        <h3>Test Agent</h3>
+                        <p>Generates test cases and validates functionality.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚙️</div>
+                        <h3>Ops Agent</h3>
+                        <p>Manages deployment, infrastructure, and runtime operations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single vs Multi-Agent -->
+            <div class="content-block animate-slide-up delay-2">
+                <h2>Single Agent vs. Multi-Agent ⚔️</h2>
+                <p>
+                    The difference is not just in quantity, but in workflow. Multi-agent systems enable collaboration
+                    patterns that mirror human engineering teams.
+                </p>
+                <ul class="benefits-list">
+                    <li>🔄 <strong>Sequential vs. Parallel:</strong> Multi-agent systems can plan, code, and review simultaneously.</li>
+                    <li>🤝 <strong>Collaboration:</strong> Agents can challenge each other's assumptions to improve quality.</li>
+                    <li>🎯 <strong>Specialization:</strong> Each agent is optimized for its specific domain (e.g., SQL vs. CSS).</li>
+                    <li>🔍 <strong>Self-Correction:</strong> One agent detects errors that another missed.</li>
+                </ul>
+            </div>
+
+            <!-- Business & Engineering Value -->
+            <div class="content-block animate-slide-up delay-3">
+                <h2>Business & Engineering Value 💎</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Faster Delivery</h3>
+                        <p>Parallel processing reduces lead time for complex features.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h3>Higher Quality</h3>
+                        <p>Multi-stage review processes catch bugs before they reach production.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Reduced Load</h3>
+                        <p>Engineers focus on high-level strategy while agents handle implementation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Outlook -->
+            <div class="content-block animate-slide-up delay-4">
+                <h2>The Future Outlook 🚀</h2>
+                <p>
+                    Multi-agent systems are the next evolution of Developer Experience (DevEx). As models get cheaper and faster,
+                    we will see agents becoming integral members of the engineering workforce, collaborating with humans
+                    seamlessly to build software faster and better than ever before.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Embrace the Future?</h2>
+            <p>Join the conversation about multi-agent systems at our next breakfast.</p>
+            <a href="/join" class="btn btn-large btn-primary pulse">Join the Club</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
