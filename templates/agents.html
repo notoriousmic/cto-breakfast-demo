@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+
+{% block title %}Battle of the Agents - CTO Breakfast Club by Microsoft{% endblock %}
+
+{% block content %}
+<section class="agents-hero">
+    <div class="container">
+        <div class="agents-hero-content">
+            <h1 class="agents-hero-title animate-fade-in">
+                Battle of the <span class="highlight-agents">Agents</span>
+            </h1>
+            <p class="agents-hero-subtitle animate-fade-in-delay">
+                Why multi-agent collaboration is the future of software delivery 🤖✨
+            </p>
+        </div>
+        <div class="agents-visual" aria-hidden="true">
+            <div class="agent-orb orb-1"></div>
+            <div class="agent-orb orb-2"></div>
+            <div class="agent-orb orb-3"></div>
+            <div class="agent-orb orb-4"></div>
+            <div class="agent-orb orb-5"></div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            <div class="content-block agents-intro animate-slide-up">
+                <h2>The Single-Agent Limitation 🚧</h2>
+                <p>
+                    Traditional approaches rely on a single AI agent to handle the entire software development lifecycle. 
+                    While powerful, this approach faces fundamental challenges:
+                </p>
+                <div class="limitation-grid">
+                    <div class="limitation-card">
+                        <div class="limitation-icon">🧠</div>
+                        <h3>Context Overload</h3>
+                        <p>A single agent must juggle planning, coding, testing, security, and deployment—leading to diluted focus and suboptimal results.</p>
+                    </div>
+                    <div class="limitation-card">
+                        <div class="limitation-icon">👁️</div>
+                        <h3>Bias & Blind Spots</h3>
+                        <p>Every model has inherent biases. A single perspective means missed edge cases, security vulnerabilities, and architectural flaws.</p>
+                    </div>
+                    <div class="limitation-card">
+                        <div class="limitation-icon">📈</div>
+                        <h3>Scaling Challenges</h3>
+                        <p>As complexity grows, a monolithic agent becomes a bottleneck, unable to parallelize work or specialize deeply in critical areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="agents-showcase">
+    <div class="container">
+        <h2 class="section-title agents-section-title">Meet the Specialized Agents 🤖</h2>
+        <p class="agents-intro-text">Each agent brings domain expertise and focus to a specific phase of the SDLC</p>
+        
+        <div class="agents-grid">
+            <div class="agent-card animate-slide-up">
+                <div class="agent-avatar architect">🏗️</div>
+                <h3>Planner / Architect Agent</h3>
+                <div class="agent-role">Strategic Design</div>
+                <p>Analyzes requirements, designs system architecture, and creates execution plans. Focuses on scalability, maintainability, and alignment with business goals.</p>
+                <div class="agent-skills">
+                    <span class="skill-tag">Architecture Patterns</span>
+                    <span class="skill-tag">Requirements Analysis</span>
+                    <span class="skill-tag">Technical Feasibility</span>
+                </div>
+            </div>
+
+            <div class="agent-card animate-slide-up delay-1">
+                <div class="agent-avatar coder">💻</div>
+                <h3>Coding Agent</h3>
+                <div class="agent-role">Implementation</div>
+                <p>Writes clean, efficient code following best practices and design patterns. Specializes in language-specific optimizations and idiomatic implementations.</p>
+                <div class="agent-skills">
+                    <span class="skill-tag">Code Generation</span>
+                    <span class="skill-tag">Refactoring</span>
+                    <span class="skill-tag">Performance Optimization</span>
+                </div>
+            </div>
+
+            <div class="agent-card animate-slide-up delay-2">
+                <div class="agent-avatar reviewer">🔍</div>
+                <h3>Review & Security Agent</h3>
+                <div class="agent-role">Quality Assurance</div>
+                <p>Performs code review, identifies security vulnerabilities, and ensures compliance with standards. Acts as the critical eye for quality and safety.</p>
+                <div class="agent-skills">
+                    <span class="skill-tag">Security Scanning</span>
+                    <span class="skill-tag">Code Quality</span>
+                    <span class="skill-tag">Best Practices</span>
+                </div>
+            </div>
+
+            <div class="agent-card animate-slide-up delay-3">
+                <div class="agent-avatar tester">🧪</div>
+                <h3>Test & Validation Agent</h3>
+                <div class="agent-role">Verification</div>
+                <p>Designs comprehensive test strategies, generates test cases, and validates functionality. Ensures code works as intended across scenarios.</p>
+                <div class="agent-skills">
+                    <span class="skill-tag">Test Generation</span>
+                    <span class="skill-tag">Edge Cases</span>
+                    <span class="skill-tag">Integration Testing</span>
+                </div>
+            </div>
+
+            <div class="agent-card animate-slide-up delay-4">
+                <div class="agent-avatar ops">⚙️</div>
+                <h3>Ops / Runtime Agent</h3>
+                <div class="agent-role">Deployment & Monitoring</div>
+                <p>Manages deployment pipelines, infrastructure as code, and runtime monitoring. Ensures smooth operations and quick incident response.</p>
+                <div class="agent-skills">
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Infrastructure</span>
+                    <span class="skill-tag">Observability</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="comparison-section">
+    <div class="container">
+        <h2 class="section-title">Single Agent vs Multi-Agent Workflows ⚖️</h2>
+        <div class="comparison-container">
+            <div class="comparison-side single-agent">
+                <div class="comparison-header">
+                    <div class="comparison-icon">🤖</div>
+                    <h3>Single Agent Approach</h3>
+                </div>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>One Agent Does Everything</strong>
+                            <p>Plans, codes, tests, reviews, deploys</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Sequential Processing</strong>
+                            <p>Tasks handled one at a time</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Context Switching</strong>
+                            <p>Constantly changing perspectives</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Limited Depth</strong>
+                            <p>Generalist approach to all tasks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-challenges">
+                    <strong>Challenges:</strong>
+                    <ul>
+                        <li>Slower iteration cycles</li>
+                        <li>Higher cognitive load</li>
+                        <li>Missed specialized insights</li>
+                        <li>No parallel processing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="vs-divider">
+                <div class="vs-badge">VS</div>
+            </div>
+
+            <div class="comparison-side multi-agent">
+                <div class="comparison-header">
+                    <div class="comparison-icon">🤖🤖🤖</div>
+                    <h3>Multi-Agent Approach</h3>
+                </div>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Specialized Agents Collaborate</strong>
+                            <p>Each agent focuses on their expertise</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Parallel Execution</strong>
+                            <p>Multiple tasks simultaneously</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Deep Specialization</strong>
+                            <p>Expert-level focus on each domain</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Orchestrated Handoffs</strong>
+                            <p>Seamless coordination between agents</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-benefits">
+                    <strong>Benefits:</strong>
+                    <ul>
+                        <li>Faster delivery cycles ⚡</li>
+                        <li>Higher code quality 📊</li>
+                        <li>Better security posture 🔒</li>
+                        <li>Improved scalability 📈</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="value-section">
+    <div class="container">
+        <h2 class="section-title">Business & Engineering Value 💎</h2>
+        <div class="value-grid-large">
+            <div class="value-item-large animate-slide-up">
+                <div class="value-icon-large">⚡</div>
+                <h3>Faster Delivery Cycles</h3>
+                <p>Parallel processing and specialized focus reduce time-to-market. What took days can now happen in hours through coordinated agent workflows.</p>
+            </div>
+            <div class="value-item-large animate-slide-up delay-1">
+                <div class="value-icon-large">📊</div>
+                <h3>Higher Code Quality</h3>
+                <p>Dedicated review and testing agents catch issues early. Multiple perspectives ensure robust, maintainable, and well-architected solutions.</p>
+            </div>
+            <div class="value-item-large animate-slide-up delay-2">
+                <div class="value-icon-large">🧠</div>
+                <h3>Reduced Cognitive Load</h3>
+                <p>Engineers focus on orchestration and strategy rather than every implementation detail. Agents handle the tactical execution.</p>
+            </div>
+            <div class="value-item-large animate-slide-up delay-3">
+                <div class="value-icon-large">🔄</div>
+                <h3>Model & Vendor Flexibility</h3>
+                <p>Mix and match best-in-class models for each task. Not locked into a single AI provider or capability set.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="future-section">
+    <div class="container">
+        <div class="future-content">
+            <h2 class="section-title">The Future is Multi-Agent 🚀</h2>
+            <div class="future-grid">
+                <div class="future-card animate-slide-up">
+                    <h3>🤝 Agents as Team Members</h3>
+                    <p>
+                        The next evolution of software engineering sees AI agents as integral members of development teams—each with specialized roles, 
+                        responsibilities, and areas of expertise. Just like human teams, diversity and specialization drive excellence.
+                    </p>
+                </div>
+                <div class="future-card animate-slide-up delay-1">
+                    <h3>🌐 Orchestration Becomes Key</h3>
+                    <p>
+                        Engineering leaders will shift from writing every line of code to orchestrating agent workflows, defining guardrails, 
+                        and ensuring business alignment. The role evolves from implementer to conductor.
+                    </p>
+                </div>
+                <div class="future-card animate-slide-up delay-2">
+                    <h3>📈 Continuous Evolution</h3>
+                    <p>
+                        Multi-agent systems enable rapid experimentation and improvement. New agents can be added, existing ones refined, 
+                        and workflows optimized—all without disrupting the entire development process.
+                    </p>
+                </div>
+            </div>
+            <div class="future-quote">
+                <blockquote>
+                    "The future of software development isn't about replacing engineers with AI—it's about augmenting teams with specialized 
+                    AI agents that handle tactical execution while humans focus on strategy, creativity, and innovation."
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Explore Multi-Agent Workflows?</h2>
+            <p>Join the conversation with technology leaders pioneering the future of AI-driven development.</p>
+            <a href="/join" class="btn btn-large btn-primary pulse">Join the Club</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
