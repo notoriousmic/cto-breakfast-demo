@@ -20,6 +20,18 @@ html {
     --text-light: #666666;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    
+    /* Agent avatar gradient colors */
+    --agent-architect-start: #667eea;
+    --agent-architect-end: #764ba2;
+    --agent-coder-start: #0078d4;
+    --agent-coder-end: #50e6ff;
+    --agent-reviewer-start: #ff6b35;
+    --agent-reviewer-end: #f7931e;
+    --agent-tester-start: #11998e;
+    --agent-tester-end: #38ef7d;
+    --agent-ops-start: #834d9b;
+    --agent-ops-end: #d04ed6;
 }
 
 body {
@@ -884,6 +896,7 @@ footer {
     background: radial-gradient(circle, rgba(0, 120, 212, 0.3), rgba(80, 230, 255, 0.1));
     animation: float-orb 6s ease-in-out infinite;
     opacity: 0.6;
+    will-change: transform;
 }
 
 .orb-1 {
@@ -1041,23 +1054,23 @@ footer {
 }
 
 .agent-avatar.architect {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, var(--agent-architect-start), var(--agent-architect-end));
 }
 
 .agent-avatar.coder {
-    background: linear-gradient(135deg, #0078d4, #50e6ff);
+    background: linear-gradient(135deg, var(--agent-coder-start), var(--agent-coder-end));
 }
 
 .agent-avatar.reviewer {
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    background: linear-gradient(135deg, var(--agent-reviewer-start), var(--agent-reviewer-end));
 }
 
 .agent-avatar.tester {
-    background: linear-gradient(135deg, #11998e, #38ef7d);
+    background: linear-gradient(135deg, var(--agent-tester-start), var(--agent-tester-end));
 }
 
 .agent-avatar.ops {
-    background: linear-gradient(135deg, #834d9b, #d04ed6);
+    background: linear-gradient(135deg, var(--agent-ops-start), var(--agent-ops-end));
 }
 
 .agent-card h3 {
